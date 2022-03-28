@@ -1,0 +1,10 @@
+option solver cplex;
+
+model C:\Users\marku\PycharmProjects\pythonProject\Eucledean_Approximation\std_probl.mod;
+data C:\Users\marku\PycharmProjects\pythonProject\Eucledean_Approximation\std_probl.dat;
+
+solve;
+display new_a;
+display new_b;
+display Z;
+display Zb;

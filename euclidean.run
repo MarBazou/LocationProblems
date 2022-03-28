@@ -1,0 +1,9 @@
+option solver C:\Users\Markus Bozau\Desktop\ampl_mswin64_WS19\gurobi.exe ;
+model C:\Users\marku\PycharmProjects\pythonProject\Eucledean_Approximation\euclidean.mod ;
+data C:\Users\marku\PycharmProjects\pythonProject\Eucledean_Approximation\euclidean.dat ;
+
+solve;
+
+display new_a  >C:\Users\marku\PycharmProjects\pythonProject\Eucledean_Approximation\euclidean.sol ;
+display new_b  >C:\Users\marku\PycharmProjects\pythonProject\Eucledean_Approximation\euclidean.sol ;
+close C:\Users\marku\PycharmProjects\pythonProject\Eucledean_Approximation\euclidean.sol ;
