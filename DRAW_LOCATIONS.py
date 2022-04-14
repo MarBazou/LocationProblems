@@ -1,7 +1,6 @@
-
 from PyQt5.uic import *
 
-import networkx as nx
+#import networkx as nx
 
 import matplotlib
 
@@ -9,30 +8,45 @@ import matplotlib.pyplot as plt
 
 import os
 
-cur_dir  = os.getcwd()
-
-
+cur_dir = os.getcwd()
 
 green = matplotlib.colors.to_hex([0.4, 0.7, 0.4])
 blue = matplotlib.colors.to_hex([0.4, 0.4, 0.8])
+violett = matplotlib.colors.to_hex([0.8, 0.4, 0.8])
+
+color_list=[green,blue,violett]
+
+
 red = matplotlib.colors.to_hex([0.9, 0.4, 0.3])
 
+obnoxious_nodes = [(1, 2), (10, 20)]
+desirable_nodes = [(4, 5), (17, 20)]
+facility_nodes = []
 
 
-obnoxious_nodes=[(1,2),(10,20)]
-desirable_nodes=[(4,5),(17,20)]
-facility_nodes=[]
+def draw_graph(instance, file_name):
+    if instance.desirable_dict:
+        plt.scatter(*zip(*instance.desirable_dict.values()), c=green, )
+    if instance.obnoxious_dict:
+        plt.scatter(*zip(*instance.obnoxious_dict.values()), c=red)
+    if instance.facility_dict:
+        plt.scatter(*zip(*instance.facility_dict.values()), c=blue, marker="*")
+    print(cur_dir + "\\" +file_name)
+    plt.savefig(cur_dir + "\\" +file_name, bbox_inches="tight")
 
+def draw_graph_multi(instance, file_name):
+    i = 0
+    for key in instance.facility_dict:
+        if instance.nodes_to_facility_dict[key]:
+            plt.scatter(*zip(*instance.nodes_to_facility_dict[key]), c=color_list[i])
+        if instance.facility_dict:
+            plt.scatter(*zip(*[instance.facility_dict[key]]), c=color_list[i], marker="*")
+        i += 1
+    if instance.obnoxious_dict:
+        plt.scatter(*zip(*instance.obnoxious_dict.values()), c=red, marker="2")
 
-
-def DrawGraph(instance):
-    if instance.desirable_nodes!=[]:
-        plt.scatter(*zip(*instance.desirable_nodes),c=green)
-    if instance.obnoxious_nodes!=[]:
-        plt.scatter(*zip(*instance.obnoxious_nodes),c=red)
-    if instance.facility_nodes:
-        plt.scatter(*zip(*instance.facility_nodes),c=blue)
-    plt.savefig(cur_dir + "/sanc_fig", bbox_inches="tight")
+    print(cur_dir + "\\" + file_name)
+    plt.savefig(cur_dir + "\\" + file_name, bbox_inches="tight")
 
 
 

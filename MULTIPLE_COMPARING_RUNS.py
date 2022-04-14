@@ -1,6 +1,6 @@
-import Eucledean_Approximation.RANDOM_INSTANCE_GENERATOR as RIG
-import Eucledean_Approximation.AMPL_MODEL_SOLVER as AMS
-import Eucledean_Approximation.BASIC_MODEL as BM
+import RANDOM_INSTANCE_GENERATOR as RIG
+import AMPL_MODEL_SOLVER as AMS
+import BASIC_MODEL as BM
 import time
 
 desirable_numb, obnoxious_numb, max_coord = 40, 7, 1200

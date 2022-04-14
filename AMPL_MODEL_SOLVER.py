@@ -20,17 +20,17 @@ from amplpy.environment import Environment
 import amplpy
 
 class AMPL_MS(object):
-    def __init__(self, Model , file_string , solver_string):  # goals 1 fermat weber  bzw summe        2 centerproblem
+    def __init__(self, model, file_string, solver_string):  # goals 1 fermat weber  bzw summe        2 centerproblem
         directory = os.getcwd()
         self.dir_path = os.path.dirname(os.path.realpath(__file__))
-        self.mod_string = Model.mod_string
-        self.dat_string = Model.dat_string
-        self.file_string =file_string
+        self.mod_string = model.mod_string
+        self.dat_string = model.dat_string
+        self.file_string = file_string
         self.solver_string = solver_string
-        self.var_string_array=Model.var_name_array
-        self.obj_string= Model.obj_string
-        self.mod_filename = self.dir_path + "\\" + self.file_string + ".mod"
-        self.dat_filename = self.dir_path + "\\" + self.file_string + ".dat"
+        self.var_string_array = model.var_name_array
+        self.obj_string = model.obj_string
+        self.mod_filename = self.dir_path + "\\model_files\\" + self.file_string + ".mod"
+        self.dat_filename = self.dir_path + "\\model_files\\" + self.file_string + ".dat"
         self.gurobi_solver = "C:\\Users\\marku\\OneDrive\\Desktop\\AMPL\\gurobi.exe"
         self.cplex_solver = "C:\\Users\\marku\\OneDrive\\Desktop\\AMPL\\cplex.exe"
         self.o_filename = os.getcwd() + "\\" + self.file_string + ".sol"
@@ -102,6 +102,9 @@ class AMPL_MS(object):
         self.WriteDatFile()
         sol, objective = self.StartSolver()
         return sol, objective
+
+
+
 
 def main():
     print("nothing to do here")
